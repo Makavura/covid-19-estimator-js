@@ -28,12 +28,10 @@ const covid19ImpactEstimator = (data) => {
     truncatedFactor = Math.trunc(unTruncatedFactor);
     periodInDays = data.timeToElapse;
   } else if (data.periodType === 'weeks') {
-    unTruncatedFactor = (data.timeToElapse * 7) / 3;
-    truncatedFactor = Math.trunc(unTruncatedFactor);
+    truncatedFactor = Math.trunc((data.timeToElapse * 7) / 3);
     periodInDays = data.timeToElapse * 7;
   } else if (data.periodType === 'months') {
-    unTruncatedFactor = (data.timeToElapse * 30) / 3;
-    truncatedFactor = Math.trunc(unTruncatedFactor);
+    truncatedFactor = Math.trunc((data.timeToElapse * 30) / 3);
     periodInDays = data.timeToElapse * 30;
   }
   outputData.impact.currentlyInfected = data.reportedCases * 10;
