@@ -21,25 +21,27 @@ const covid19ImpactEstimator = (data) => {
     }
   };
   let truncatedFactor;
+  let unTruncatedFactor;
   let periodInDays;
   if (data.periodType === 'days') {
-    truncatedFactor = Math.trunc(data.timeToElapse / 3);
+    unTruncatedFactor = data.timeToElapse / 3;
+    truncatedFactor = Math.trunc(unTruncatedFactor);
     periodInDays = data.timeToElapse;
   } else if (data.periodType === 'weeks') {
-    truncatedFactor = (data.timeToElapse * 7) / 3;
+    unTruncatedFactor = (data.timeToElapse * 7) / 3;
+    truncatedFactor = Math.trunc(unTruncatedFactor);
     periodInDays = data.timeToElapse * 7;
   } else if (data.periodType === 'months') {
-    truncatedFactor = (data.timeToElapse * 30) / 3;
+    unTruncatedFactor = (data.timeToElapse * 30) / 3;
+    truncatedFactor = Math.trunc(unTruncatedFactor);
     periodInDays = data.timeToElapse * 30;
   }
   outputData.impact.currentlyInfected = data.reportedCases * 10;
   outputData.severeImpact.currentlyInfected = data.reportedCases * 50;
-  outputData.impact.infectionsByRequestedTime = Math.trunc(outputData.impact.currentlyInfected
-      * ((2 ** truncatedFactor)));
-  outputData.severeImpact.infectionsByRequestedTime = Math.trunc(
-    outputData.severeImpact.currentlyInfected
-      * ((2 ** truncatedFactor))
-  );
+  outputData.impact.infectionsByRequestedTime = outputData.impact.currentlyInfected
+      * ((2 ** truncatedFactor));
+  outputData.severeImpact.infectionsByRequestedTime = outputData.severeImpact.currentlyInfected
+      * ((2 ** truncatedFactor));
   outputData.impact.severeCasesByRequestedTime = Math.trunc(
     outputData.impact.infectionsByRequestedTime * 0.15
   );
