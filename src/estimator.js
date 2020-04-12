@@ -21,11 +21,9 @@ const covid19ImpactEstimator = (data) => {
     }
   };
   let truncatedFactor;
-  let unTruncatedFactor;
   let periodInDays;
   if (data.periodType === 'days') {
-    unTruncatedFactor = data.timeToElapse / 3;
-    truncatedFactor = Math.trunc(unTruncatedFactor);
+    truncatedFactor = Math.trunc(data.timeToElapse / 3);
     periodInDays = data.timeToElapse;
   } else if (data.periodType === 'weeks') {
     truncatedFactor = (data.timeToElapse * 7) / 3;
