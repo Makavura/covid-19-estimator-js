@@ -42,7 +42,8 @@ const covid19ImpactEstimator = (data) => {
       * ((2 ** truncatedFactor)));
   outputData.severeImpact.infectionsByRequestedTime = Math.trunc(
     outputData.severeImpact.currentlyInfected
-      * ((2 ** truncatedFactor)));
+      * ((2 ** truncatedFactor))
+  );
   outputData.impact.severeCasesByRequestedTime = Math.trunc(
     outputData.impact.infectionsByRequestedTime * 0.15
   );
