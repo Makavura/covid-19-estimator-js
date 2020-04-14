@@ -116,8 +116,8 @@ router.post('/', (req, res) => {
 });
 
 router.get('/json', (req, res) => {
-    res.json({ message: 'hooray! welcome to our api!' });
-  });
+  res.json({ message: 'hooray! welcome to our api!' });
+});
 
 app.listen(port);
 // eslint-disable-next-line no-console
