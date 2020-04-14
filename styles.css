@@ -1,12 +1,16 @@
 label {
-    color: green;
+    color: yellow;
 }
-body {
-    background: black;
-}
+
 p {
-    color: green;
+    color: yellow;
 }
 h1{
-    color: green;
+    color: yellow;
+}
+input[type=number]{
+    color: yellow;
+}
+option{
+    color: yellow;
 }
